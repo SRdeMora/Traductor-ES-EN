@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor Español a Inglés</title>
+</head>
+<body>
+    <h1>Traductor de Español a Inglés</h1>
+    <textarea id="texto" placeholder="Escribe tu texto aquí..."></textarea>
+    <button onclick="traducir()">Traducir</button>
+    <p>Traducción: <span id="resultado"></span></p>
+
+    <script>
+        function traducir() {
+            const texto = document.getElementById("texto").value;
+            fetch("/traducir", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ texto })
+            })
+            .then(response => response.json())
+            .then(data => document.getElementById("resultado").textContent = data.traduccion)
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
