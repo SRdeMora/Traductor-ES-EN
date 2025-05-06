@@ -1,22 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
-    verificarServicio();
-});
-
-function verificarServicio() {
-    fetch("https://traductor-es-en.onrender.com/")
-        .then(response => response.json())
-        .then(data => console.log("Estado del servidor:", data.mensaje))
-        .catch(error => console.error("Error al verificar el servicio:", error));
-}
+const SERVER_URL = "https://traductor-es-en.onrender.com";  // Reemplaza con tu URL real
 
 function traducir() {
     const texto = document.getElementById("texto").value;
 
-    fetch("https://traductor-es-en.onrender.com/traducir", {
+    fetch(`${SERVER_URL}/traducir`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ texto })
     })
     .then(response => response.json())
     .then(data => document.getElementById("resultado").textContent = data.traduccion)
-    .catch(error => console.error("Error en la tradu
+    .catch(error => console.error("Error en la traducción:", error));
+}
