@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function verificarServicio() {
-    fetch("http://localhost:5000/")
+    fetch("https://traductor-es-en.onrender.com/")
         .then(response => response.json())
         .then(data => console.log("Estado del servidor:", data.mensaje))
         .catch(error => console.error("Error al verificar el servicio:", error));
@@ -12,7 +12,7 @@ function verificarServicio() {
 function traducir() {
     const texto = document.getElementById("texto").value;
 
-    fetch("http://localhost:5000/traducir", {
+    fetch("https://traductor-es-en.onrender.com/traducir", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ texto })
