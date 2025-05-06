@@ -12,17 +12,7 @@
     <p>Traducción: <span id="resultado"></span></p>
     <script src="script.js"></script>
     <script>
-        function traducir() {
-            const texto = document.getElementById("texto").value;
-            fetch("/traducir", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ texto })
-            })
-            .then(response => response.json())
-            .then(data => document.getElementById("resultado").textContent = data.traduccion)
-            .catch(error => console.error("Error:", error));
-        }
+        
     </script>
 </body>
 </html>
